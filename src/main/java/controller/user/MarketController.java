@@ -136,7 +136,7 @@ public class MarketController extends DatabaseCredentials implements Initializab
     }
 
     public void profileButtonClicked(ActionEvent actionEvent) throws Exception{
-        SceneManager.getInstance().switchScene(SceneManager.States.PROFILE);
+        //SceneManager.getInstance().switchScene(SceneManager.States.PROFILE);
     }
 
 
