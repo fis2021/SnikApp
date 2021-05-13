@@ -1,9 +1,9 @@
 package controller.login;
 
 import config.DatabaseCredentials;
-import controller.AlertBox;
+
 import controller.SceneManager;
-import controller.user.MarketController;
+
 import domain.Person;
 import domain.User;
 import javafx.event.ActionEvent;
@@ -43,7 +43,7 @@ public class LoginController extends DatabaseCredentials implements Initializabl
         boolean check = personRepository.personExists(user, pw);
 
         if (!check) {
-            AlertBox.display("Eroare","User or password incorect");
+           // AlertBox.display("Eroare","User or password incorect");
         }
 
         if (check){
@@ -51,17 +51,10 @@ public class LoginController extends DatabaseCredentials implements Initializabl
             Person personLogged = personRepository.getPersonAfterUsername(user);
 
             if(personLogged instanceof User) {
-                FXMLLoader loader = SceneManager.getInstance().getFXML(SceneManager.States.MARKET);
-                MarketController controller = loader.getController();
-                controller.setUsernameLogged(user);
-                controller.initializeSneakTable();
-                controller.setObservableListForSneakerTable();
-                SceneManager.getInstance().switchScene(SceneManager.States.MARKET);
-            }
-
-            if(userLogged instanceof Admin) {
 
             }
+
+            //TODO implement admin
 
         }
 
