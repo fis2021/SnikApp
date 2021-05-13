@@ -18,10 +18,10 @@ public class Main extends Application {
 
 
 
-        /* TESTING
+        /* TESTING*/
         SceneManager.setUp(stage);
         SceneManager.getInstance().switchScene(SceneManager.States.LOGIN);
-        */
+
         //PersonRepository r1 = new PersonRepository(url, username, password);
 
 
