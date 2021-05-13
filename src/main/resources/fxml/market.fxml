@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.MarketController">
+    <children>
+        <TreeTableView fx:id="sneakerTable" layoutX="62.0" layoutY="78.0" prefHeight="245.0" prefWidth="505.0">
+            <columns>
+                <TreeTableColumn fx:id="idColumn" prefWidth="101.0" text="ID" />
+                <TreeTableColumn fx:id="nameColumn" prefWidth="111.0" text="Name" />
+                <TreeTableColumn fx:id="sizeColumn" prefWidth="77.0" text="Size" />
+                <TreeTableColumn fx:id="conditionColumn" prefWidth="117.0" text="Condition" />
+                <TreeTableColumn fx:id="priceColumn" prefWidth="101.0" text="Price" />
+            </columns>
+        </TreeTableView>
+        <Button fx:id="profileButton" layoutX="62.0" layoutY="33.0" mnemonicParsing="false" onAction="#profileButtonClicked" text="Profile" />
+        <Label layoutX="62.0" layoutY="329.0" prefHeight="39.0" prefWidth="119.0" text="Id of the sneaker" textFill="#09a706">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font></Label>
+        <TextField fx:id="idToBuy" layoutX="213.0" layoutY="336.0" promptText="ID" />
+        <Button fx:id="buyButton" layoutX="432.0" layoutY="336.0" mnemonicParsing="false" onAction="#buyButtonClicked" prefHeight="25.0" prefWidth="135.0" text="Buy" />
+    </children>
+</AnchorPane>
