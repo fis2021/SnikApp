@@ -16,9 +16,9 @@ public class SceneManager {
     private FXMLLoader[] loaders;
 
     public enum States {
-       LOGIN("fxml/login.fxml");
-//        REGISTER("fxml/register.fxml"),
-//        MARKET("fxml/market.fxml"),
+       LOGIN("fxml/login.fxml"),
+       REGISTER("fxml/register.fxml"),
+        MARKET("fxml/market.fxml");
 //        PROFILE("fxml/profile.fxml");
 
         public final String url;

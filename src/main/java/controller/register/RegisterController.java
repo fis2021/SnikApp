@@ -3,10 +3,12 @@ package controller.register;
 import config.DatabaseCredentials;
 import controller.AlertBox;
 import controller.SceneManager;
+import controller.user.MarketController;
 import domain.Person;
 import domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -44,6 +46,12 @@ public class RegisterController extends DatabaseCredentials implements Initializ
 
         if(personRepository.addPerson(u)){
             AlertBox.display("Succes","User adaugat cu succes");
+            FXMLLoader loader = SceneManager.getInstance().getFXML(SceneManager.States.MARKET);
+            MarketController controller = loader.getController();
+            controller.setUsernameLogged(user);
+            controller.initializeSneakTable();
+            controller.setObservableListForSneakerTable();
+            SceneManager.getInstance().switchScene(SceneManager.States.MARKET);
         }else{
             AlertBox.display("Eroare","Username-il deja exista");
         }

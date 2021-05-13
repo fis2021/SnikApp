@@ -283,7 +283,6 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
 
             Sneaker sneaker = new Sneaker(name, size, conditie, price, proprietar);
             sneaker.setId(id);
-            System.out.println(sneaker);
             return sneaker;
 
         } catch (SQLException e) {

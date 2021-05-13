@@ -19,12 +19,18 @@
                 <TreeTableColumn fx:id="priceColumn" prefWidth="101.0" text="Price" />
             </columns>
         </TreeTableView>
-        <Button fx:id="profileButton" layoutX="62.0" layoutY="33.0" mnemonicParsing="false" onAction="#profileButtonClicked" text="Profile" />
+        <Button fx:id="profileButton" layoutX="62.0" layoutY="33.0" mnemonicParsing="false" onAction="#profileButtonClicked" prefHeight="25.0" prefWidth="85.0" text="Profile" />
         <Label layoutX="62.0" layoutY="329.0" prefHeight="39.0" prefWidth="119.0" text="Id of the sneaker" textFill="#09a706">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font></Label>
         <TextField fx:id="idToBuy" layoutX="213.0" layoutY="336.0" promptText="ID" />
         <Button fx:id="buyButton" layoutX="432.0" layoutY="336.0" mnemonicParsing="false" onAction="#buyButtonClicked" prefHeight="25.0" prefWidth="135.0" text="Buy" />
+      <Label text="Label" />
+      <Label layoutX="381.0" layoutY="22.0" prefHeight="47.0" prefWidth="205.0" text="SneakerFeed" textAlignment="CENTER" textFill="#09a706">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

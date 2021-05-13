@@ -123,14 +123,14 @@ public class MarketController extends DatabaseCredentials implements Initializab
                     AlertBox.display("GOT` EM", "GOT` EM");
                     setObservableListForSneakerTable();
                 }else{
-                    AlertBox.display("Invalid Id","Id invalid");
+                    AlertBox.display("INVALID ID","Invalid ID");
                 }
 
             }else{
-                AlertBox.display("ERROR", "mai incearca si maine");
+                AlertBox.display("INVALID ID", "Invalid ID");
             }
         }else{
-            AlertBox.display("Error","baga si tu un id");
+            AlertBox.display("ERROR","Insert an ID");
         }
 
     }

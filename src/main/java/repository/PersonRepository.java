@@ -1,5 +1,6 @@
 package repository;
 
+import domain.Admin;
 import domain.Person;
 import domain.exception.CustomException;
 import domain.User;
@@ -41,7 +42,9 @@ public class PersonRepository extends AbstractRepository<Integer, Person> {
                 boolean isAdmin = rs.getBoolean("isadmin");
 
                 if (isAdmin) {
-                    //TODO implement admin
+                    Admin admin = new Admin(username, password, firstName, lastName, address, phone);
+                    admin.setId(id);
+                    super.add(admin);
                 } else {
                     User user = new User(username, password, firstName, lastName, address, phone);
                     user.setId(id);
@@ -71,7 +74,7 @@ public class PersonRepository extends AbstractRepository<Integer, Person> {
             return false;
         }
 
-        //TODO implement admin
+
 
         if( (person instanceof User) ) {
             isAdmin = ((User) person).isAdmin();
