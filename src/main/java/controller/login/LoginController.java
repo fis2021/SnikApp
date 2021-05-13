@@ -51,7 +51,7 @@ public class LoginController extends DatabaseCredentials implements Initializabl
             Person personLogged = personRepository.getPersonAfterUsername(user);
 
             if(personLogged instanceof User) {
-
+                System.out.println("sunt aici");
             }
 
             //TODO implement admin
@@ -60,7 +60,7 @@ public class LoginController extends DatabaseCredentials implements Initializabl
 
     }
     public void registerButtonClicked(ActionEvent actionEvent) throws Exception {
-        SceneManager.getInstance().switchScene(SceneManager.States.REGISTER);
+//        SceneManager.getInstance().switchScene(SceneManager.States.REGISTER);
     }
 
 }
