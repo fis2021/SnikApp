@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Callback;
@@ -57,7 +58,7 @@ public class MarketController extends DatabaseCredentials implements Initializab
     public void setObservableListForSneakerTable(){
         ObservableList<Sneak> products = FXCollections.observableArrayList();
         for(Sneaker s : sneakerRepository.getAll()){
-            if(!s.getUsername().equals(usernameLogged)){
+            if(!s.getUsername().equals(usernameLogged)&& s.isAproved()){
                 Sneak sneak = new Sneak(Integer.toString(s.getId()), s.getName(), Integer.toString(s.getSize()),s.getCondition(), Double.toString(s.getPrice()));
                 products.add(sneak);
             }
@@ -136,7 +137,14 @@ public class MarketController extends DatabaseCredentials implements Initializab
     }
 
     public void profileButtonClicked(ActionEvent actionEvent) throws Exception{
-        //SceneManager.getInstance().switchScene(SceneManager.States.PROFILE);
+        FXMLLoader loader = SceneManager.getInstance().getFXML(SceneManager.States.PROFILE);
+        ProfileController controller = loader.getController();
+        controller.setUsernameLogged(usernameLogged);
+        controller.initializeSneakTable();
+        controller.setObservableListForSneakerTable();
+        controller.getSneakerTable().refresh();
+        SceneManager.getInstance().switchScene(SceneManager.States.PROFILE);
+        SceneManager.getInstance().switchScene(SceneManager.States.PROFILE);
     }
 
 

@@ -32,6 +32,16 @@ public class LoginController extends DatabaseCredentials implements Initializabl
 
     private PersonRepository personRepository = new PersonRepository(super.url, super.username, super.password);
 
+    private String usernameLogged;
+
+    public void setUsernameLogged(String usernameLogged){
+        this.usernameLogged = usernameLogged;
+    }
+
+    public String getUsernameLogged(){
+        return usernameLogged;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

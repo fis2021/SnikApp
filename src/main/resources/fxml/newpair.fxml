@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="520.0" prefWidth="343.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.AddSneakerController">
+    <children>
+        <Label alignment="CENTER" layoutX="78.0" layoutY="28.0" prefHeight="32.0" prefWidth="188.0" text="New Pair" textFill="#09a706">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <TextField fx:id="nameText" layoutX="97.0" layoutY="106.0" promptText="Name" />
+        <TextField fx:id="sizeText" layoutX="97.0" layoutY="157.0" promptText="Size" />
+        <TextField fx:id="conditionText" layoutX="97.0" layoutY="212.0" promptText="Condition" />
+        <TextField fx:id="priceText" layoutX="97.0" layoutY="270.0" promptText="Price" />
+        <Button fx:id="requestButton" layoutX="98.0" layoutY="412.0" mnemonicParsing="false" onAction="#requestButtonClicked" prefHeight="25.0" prefWidth="149.0" text="Request" />
+    </children>
+</AnchorPane>

@@ -8,13 +8,15 @@ public class Sneaker extends BaseEntity<Integer> {
     private String condition;
     private double price;
     private String username;
+    private boolean aproved = false;
 
-    public Sneaker(String name, int size, String condition, double price, String username) {
+    public Sneaker(String name, int size, String condition, double price, String username, boolean aproved) {
         this.name = name;
         this.size = size;
         this.condition = condition;
         this.price = price;
         this.username = username;
+        this.aproved = aproved;
     }
 
     public String getName() {
@@ -55,6 +57,14 @@ public class Sneaker extends BaseEntity<Integer> {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public boolean isAproved() {
+        return aproved;
+    }
+
+    public void setAproved(boolean aproved) {
+        this.aproved = aproved;
     }
 
     @Override

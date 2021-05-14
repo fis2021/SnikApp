@@ -55,7 +55,8 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
                 String condition = rs.getString("conditie");
                 double price = rs.getDouble("price");
                 String username = rs.getString("proprietar");
-                Sneaker Sneaker = new Sneaker(name, size, condition, price, username);
+                Boolean aproved=rs.getBoolean("aproved");
+                Sneaker Sneaker = new Sneaker(name, size, condition, price, username,aproved);
                 Sneaker.setId(id);
                 super.add(Sneaker);
             }
@@ -81,9 +82,10 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
         String conditie = s.getCondition();
         double price = s.getPrice();
         String usernam = s.getUsername();
+        boolean aproved =false;
 
         try (var connection = DriverManager.getConnection(url, username, password)) {
-            sql = "insert into \"Sneaker\"(name, size, conditie, price, proprietar) VALUES (?,?,?,?,?) ";
+            sql = "insert into \"Sneaker\"(name, size, conditie, price, proprietar,aproved) VALUES (?,?,?,?,?,?) ";
 
             var ps = connection.prepareStatement(sql);
             ps.setString(1, name);
@@ -91,6 +93,8 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
             ps.setString(3, conditie);
             ps.setDouble(4, price);
             ps.setString(5,usernam);
+            ps.setBoolean(6,aproved);
+
             var rs = ps.executeUpdate();
             super.add(s);
 
@@ -222,8 +226,6 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
                 e.printStackTrace();
             }
         } else {
-            //TODO: something will need to be done here to solve
-            // this thing to be shown in GUI
             throw new CustomException("You're trying to delete a non-existent Sneaker!");
         }
         return false;
@@ -280,8 +282,9 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
             String conditie = rs.getString("conditie");
             double price = rs.getDouble("price");
             String proprietar = rs.getString("proprietar");
+            Boolean aproved=rs.getBoolean("aproved");
 
-            Sneaker sneaker = new Sneaker(name, size, conditie, price, proprietar);
+            Sneaker sneaker = new Sneaker(name, size, conditie, price, proprietar,aproved);
             sneaker.setId(id);
             return sneaker;
 
