@@ -7,37 +7,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * NOTE: The SneakerRepository class, represents the interface of the application
- * with the database, everything you want to modify in the database related to
- * the Sneakers, will be done through this repo
- */
-
 public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
 
     private static String url;
     private static String username;
     private static String password;
 
-    /**
-     * Database Credentials
-     *
-     * @param url      url of the database
-     * @param username ursername of the database
-     * @param password password for the database
-     */
     public SneakerRepository(String url, String username, String password) {
         this.url = url;
         this.username = username;
         this.password = password;
     }
 
-    /**
-     * This function loads data from the database into the memory
-     *
-     * @throws SQLException If there is the case, there will be thrown
-     *                      a SqlException while using the database
-     */
     private void loadData() throws SQLException {
 
         super.elems.clear();
@@ -65,15 +46,6 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
         }
     }
 
-
-    /**
-     * @param s The Sneaker that needs to be added in the database
-     * @return true if the Sneaker hass been added, false otherwise
-     * @throws CustomException Duplicated Sneaker CustomException, if
-     *                         there Sneaker already exists in the database
-     * @throws SQLException    If there is the case, there will be thrown
-     *                         a SqlException while using the database
-     */
     public boolean addSneaker(Sneaker s) throws CustomException, SQLException {
 
         String sql;
@@ -106,13 +78,6 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
         return false;
     }
 
-    /**
-     * @param p The Sneaker for which we search the id
-     * @return the id(long > 0) if the Sneaker was found,
-     * -1 otherwise
-     * @throws SQLException If there is the case, there will be thrown
-     *                      a SqlException while using the database
-     */
     public int findSneakerId(Sneaker p) throws SQLException {
 
         String sql = "Select * from \"Sneaker\" where " + "name = " + "'" + p.getName() + "' AND proprietar = " + "'" + p.getUsername() + "' AND size = " + p.getSize() + ";";
@@ -193,15 +158,6 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
         return false;
     }
 
-    /**
-     * @param s The Sneaker which needs to be deleted from
-     *          the database
-     * @return true if the Sneaker was deleted, false otherwise
-     * @throws CustomException Sneaker doesn't exist in the database,
-     *                         CustomException
-     * @throws SQLException    If there is the case, there will be thrown
-     *                         a SqlException while using the database
-     */
     public boolean deleteSneaker(Sneaker s) throws CustomException, SQLException {
 
         int idFromWhereToUpdate = findSneakerId(s);
@@ -231,12 +187,10 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
         return false;
     }
 
-    public boolean updateSneaker(Sneaker Updated, Sneaker s) throws SQLException {
+    public boolean updateSneaker(double priceUpdated, Sneaker s) throws SQLException {
 
         String sql = "update \"Sneaker\"  SET "
-                + "name = " + createTemplate(Updated.getName())
-                + "price = "  + Updated.getPrice() + ", "
-                + " conditie = " + "'" + Updated.getCondition() + "'"
+                + "price = "  + priceUpdated+ " "
                 + "where id = "  + s.getId() + ";";
 
         try (var connection = DriverManager.getConnection(url, username, password)
@@ -251,22 +205,12 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
         return false;
     }
 
-    /**
-     * @param str The string for which we create a template,
-     *            for adding into the database
-     * @return the formatted string for sql
-     */
     private static String createTemplate(String str) {
         StringBuilder tmp = new StringBuilder();
         tmp.append("'").append(str).append("'").append(", ");
 
         return tmp.toString();
     }
-
-    /**
-     * @return The list with all the Sneakers in the
-     * repository
-     */
 
     public static Sneaker getSneaker(int SneakerId) {
         String SneakerSql = "select * from \"Sneaker\" where id=" + SneakerId;
