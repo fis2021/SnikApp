@@ -74,7 +74,9 @@ public class PersonRepository extends AbstractRepository<Integer, Person> {
             return false;
         }
 
-
+        if( (person instanceof Admin) ) {
+            isAdmin = ((Admin) person).isAdmin();
+        }
 
         if( (person instanceof User) ) {
             isAdmin = ((User) person).isAdmin();
@@ -156,7 +158,9 @@ public class PersonRepository extends AbstractRepository<Integer, Person> {
                 boolean isAdmin = rs.getBoolean("isadmin");
 
                 if (isAdmin) {
-                    //TODO implement admin
+                    Admin admin = new Admin(username, password, firstname, lastname, address, phoneNumber);
+                    admin.setId(id);
+                    return admin;
 
                 }
                 else {

@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="520.0" prefWidth="343.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.AddSneakerContorller">
+<AnchorPane prefHeight="520.0" prefWidth="343.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.AddSneakerController">
     <children>
         <Label alignment="CENTER" layoutX="78.0" layoutY="28.0" prefHeight="32.0" prefWidth="188.0" text="New Pair" textFill="#09a706">
             <font>

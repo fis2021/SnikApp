@@ -132,7 +132,11 @@ public class ProfileController extends DatabaseCredentials implements Initializa
     }
 
     public void addButtonClicked(ActionEvent actionEvent) {
-
+        FXMLLoader loader = SceneManager.getInstance().getFXML(SceneManager.States.NEWPAIR);
+        AddSneakerController controller = loader.getController();
+        controller.setUsernameLogged(usernameLogged);
+        controller.intializeSneakerRepo();
+        SceneManager.getInstance().switchScene(SceneManager.States.NEWPAIR);
 
     }
 

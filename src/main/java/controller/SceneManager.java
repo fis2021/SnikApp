@@ -18,8 +18,9 @@ public class SceneManager {
     public enum States {
        LOGIN("fxml/login.fxml"),
        REGISTER("fxml/register.fxml"),
-        MARKET("fxml/market.fxml");
-//        PROFILE("fxml/profile.fxml");
+        MARKET("fxml/market.fxml"),
+        PROFILE("fxml/profile.fxml"),
+        NEWPAIR("fxml/newpair.fxml");
 
         public final String url;
 
