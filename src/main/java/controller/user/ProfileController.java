@@ -138,8 +138,24 @@ public class ProfileController extends DatabaseCredentials implements Initializa
         }
     }
 
-    public void deleteButtonClicked(ActionEvent actionEvent) {
+    public void deleteButtonClicked(ActionEvent actionEvent) throws Exception {
+        if(!idText.getText().isEmpty()){
+            if(sneakerRepository.idExists(Integer.parseInt(idText.getText())) ){
+                Sneaker s  = sneakerRepository.getSneaker(Integer.parseInt(idText.getText()));
+                if(s.getUsername().equals(usernameLogged) && s.isAproved()){
+                    sneakerRepository.deleteSneaker(s);
+                    AlertBox.display("DELETE", "Delete successful");
+                    setObservableListForSneakerTable();
+                }else{
+                    AlertBox.display("INVALID ID","Invalid ID");
+                }
 
+            }else{
+                AlertBox.display("INVALID ID", "Invalid ID");
+            }
+        }else{
+            AlertBox.display("ERROR","Insert an ID");
+        }
     }
 
     public void addButtonClicked(ActionEvent actionEvent) {
