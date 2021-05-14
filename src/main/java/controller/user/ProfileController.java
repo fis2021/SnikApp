@@ -3,6 +3,7 @@ package controller.user;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import config.DatabaseCredentials;
+import controller.AlertBox;
 import controller.SceneManager;
 import domain.Sneaker;
 import javafx.beans.property.SimpleStringProperty;
@@ -71,9 +72,7 @@ public class ProfileController extends DatabaseCredentials implements Initializa
         ObservableList<ProfileController.Sneak> products = FXCollections.observableArrayList();
         for(Sneaker s : sneakerRepository.getAll()){
             if(s.getUsername().equals(usernameLogged) && s.isAproved()){
-
                 Sneak sneak = new Sneak(Integer.toString(s.getId()), s.getName(), Integer.toString(s.getSize()),s.getCondition(), Double.toString(s.getPrice()));
-                System.out.println(sneak);
                 products.add(sneak);
             }
         }
@@ -123,8 +122,20 @@ public class ProfileController extends DatabaseCredentials implements Initializa
         SceneManager.getInstance().switchScene(SceneManager.States.MARKET);
     }
 
-    public void editButtonClicked(ActionEvent actionEvent) {
-
+    public void editButtonClicked(ActionEvent actionEvent) throws Exception {
+        int id = Integer.parseInt(idText.getText());
+        int newPrice = Integer.parseInt(priceText.getText());
+        Sneaker s = SneakerRepository.getSneaker(id);
+        if(s != null){
+            if(sneakerRepository.updateSneaker(newPrice, s)){
+                AlertBox.display("UPDATED", "The price has been updated");
+                setObservableListForSneakerTable();
+            }else{
+                AlertBox.display("ERROR", "The price hasn`t been updated");
+            }
+        }else{
+            AlertBox.display("ERROR", "Invalid ID");
+        }
     }
 
     public void deleteButtonClicked(ActionEvent actionEvent) {
