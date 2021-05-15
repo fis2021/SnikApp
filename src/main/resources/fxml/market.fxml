@@ -26,7 +26,6 @@
             </font></Label>
         <TextField fx:id="idToBuy" layoutX="213.0" layoutY="336.0" promptText="ID" />
         <Button fx:id="buyButton" layoutX="432.0" layoutY="336.0" mnemonicParsing="false" onAction="#buyButtonClicked" prefHeight="25.0" prefWidth="135.0" text="Buy" />
-      <Label text="Label" />
       <Label layoutX="381.0" layoutY="22.0" prefHeight="47.0" prefWidth="205.0" text="SneakerFeed" textAlignment="CENTER" textFill="#09a706">
          <font>
             <Font size="32.0" />

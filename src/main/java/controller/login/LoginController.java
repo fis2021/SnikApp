@@ -5,7 +5,9 @@ import config.DatabaseCredentials;
 import controller.AlertBox;
 import controller.SceneManager;
 
+import controller.admin.AdminLoginController;
 import controller.user.MarketController;
+import domain.Admin;
 import domain.Person;
 import domain.User;
 import javafx.event.ActionEvent;
@@ -71,7 +73,14 @@ public class LoginController extends DatabaseCredentials implements Initializabl
                 SceneManager.getInstance().switchScene(SceneManager.States.MARKET);
             }
 
-            //TODO implement admin
+            if(personLogged instanceof Admin)
+            {
+                FXMLLoader loader = SceneManager.getInstance().getFXML(SceneManager.States.ADMINLOGIN);
+                AdminLoginController controller = loader.getController();
+                controller.initializeSneakTable();
+                controller.setObservableListForSneakerTable();
+                SceneManager.getInstance().switchScene(SceneManager.States.ADMINLOGIN);
+            }
 
         }
 
