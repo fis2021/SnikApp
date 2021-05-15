@@ -187,10 +187,11 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
         return false;
     }
 
-    public boolean updateSneaker(double priceUpdated, Sneaker s) throws SQLException {
+    public boolean updateSneaker(double priceUpdated,boolean aproved, Sneaker s) throws SQLException {
 
         String sql = "update \"Sneaker\"  SET "
-                + "price = "  + priceUpdated+ " "
+                + "price = "  + priceUpdated+ ", "
+                + "aproved = " + aproved + " "
                 + "where id = "  + s.getId() + ";";
 
         try (var connection = DriverManager.getConnection(url, username, password)
