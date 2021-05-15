@@ -70,8 +70,24 @@ public class AdminLoginController extends DatabaseCredentials implements Initial
         }
     }
 
-    public void declineButtonClicked(ActionEvent actionEvent){
+    public void declineButtonClicked(ActionEvent actionEvent) throws Exception{
+        if(!idField.getText().isEmpty()){
+            if(sneakerRepository.idExists(Integer.parseInt(idField.getText())) ){
+                Sneaker s  = sneakerRepository.getSneaker(Integer.parseInt(idField.getText()));
+                if(!s.isAproved()){
+                    sneakerRepository.deleteSneaker(s);
+                    AlertBox.display("DECLINE", "The sneaker is declined!");
+                    setObservableListForSneakerTable();
+                }else{
+                    AlertBox.display("INVALID ID","Invalid ID");
+                }
 
+            }else{
+                AlertBox.display("INVALID ID", "Invalid ID");
+            }
+        }else{
+            AlertBox.display("ERROR","Insert an ID");
+        }
     }
 
     public void setObservableListForSneakerTable(){
