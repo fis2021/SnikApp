@@ -50,7 +50,7 @@ public class AddSneakerController extends DatabaseCredentials implements Initial
         double price = Double.parseDouble(priceText.getText());
 
         Sneaker s = new Sneaker(name, size, condition, price, getUsernameLogged(), false);
-
+        sneakerRepository.getAll();
         if(sneakerRepository.addSneaker(s)){
             AlertBox.display("GOOD JOB","An admin will review the pair as soon as possible");
         }else{

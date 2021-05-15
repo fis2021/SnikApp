@@ -64,6 +64,10 @@ public class ProfileController extends DatabaseCredentials implements Initializa
         return sneakerTable;
     }
 
+    public SneakerRepository getSneakerRepository() {
+        return sneakerRepository;
+    }
+
     public void initialize(URL location, ResourceBundle resources){
 
     }
@@ -119,6 +123,10 @@ public class ProfileController extends DatabaseCredentials implements Initializa
     }
 
     public void marketButtonClicked(ActionEvent actionEvent) {
+        FXMLLoader loader = SceneManager.getInstance().getFXML(SceneManager.States.MARKET);
+        MarketController controller = loader.getController();
+        controller.setObservableListForSneakerTable();
+        controller.initializeSneakTable();
         SceneManager.getInstance().switchScene(SceneManager.States.MARKET);
     }
 

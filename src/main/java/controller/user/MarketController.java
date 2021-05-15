@@ -51,6 +51,10 @@ public class MarketController extends DatabaseCredentials implements Initializab
 
     private String usernameLogged;
 
+    public SneakerRepository getSneakerRepository() {
+        return sneakerRepository;
+    }
+
     public void initialize(URL location, ResourceBundle resources) {
 
     }
@@ -116,6 +120,7 @@ public class MarketController extends DatabaseCredentials implements Initializab
     }
 
     public void buyButtonClicked(ActionEvent actionEvent) throws Exception{
+        sneakerRepository.getAll();
         if(!idToBuy.getText().isEmpty()){
             if(sneakerRepository.idExists(Integer.parseInt(idToBuy.getText())) ){
                 Sneaker s  = sneakerRepository.getSneaker(Integer.parseInt(idToBuy.getText()));
@@ -139,6 +144,7 @@ public class MarketController extends DatabaseCredentials implements Initializab
     public void profileButtonClicked(ActionEvent actionEvent) throws Exception{
         FXMLLoader loader = SceneManager.getInstance().getFXML(SceneManager.States.PROFILE);
         ProfileController controller = loader.getController();
+        controller.getSneakerRepository().getAll();
         controller.setUsernameLogged(usernameLogged);
         controller.initializeSneakTable();
         controller.setObservableListForSneakerTable();

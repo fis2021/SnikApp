@@ -1,7 +1,9 @@
 
 import controller.SceneManager;
+import domain.Sneaker;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import repository.SneakerRepository;
 
 public class Main extends Application {
 
@@ -15,17 +17,8 @@ public class Main extends Application {
         String username = "gyipvslv";
         String password = "ST4aEQz6bWr46YEGkSRquEzFpCPvlQt9";
 
-
-
-
-        /* TESTING*/
         SceneManager.setUp(stage);
         SceneManager.getInstance().switchScene(SceneManager.States.LOGIN);
-
-        //PersonRepository r1 = new PersonRepository(url, username, password);
-
-
-
 
     }
 

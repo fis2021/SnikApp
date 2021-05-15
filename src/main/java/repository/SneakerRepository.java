@@ -55,17 +55,19 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
         double price = s.getPrice();
         String usernam = s.getUsername();
         boolean aproved =false;
+        int new_id = super.elems.size() + 1;
 
         try (var connection = DriverManager.getConnection(url, username, password)) {
-            sql = "insert into \"Sneaker\"(name, size, conditie, price, proprietar,aproved) VALUES (?,?,?,?,?,?) ";
+            sql = "insert into \"Sneaker\"(id,name, size, conditie, price, proprietar,aproved) VALUES (?,?,?,?,?,?,?) ";
 
             var ps = connection.prepareStatement(sql);
-            ps.setString(1, name);
-            ps.setInt(2, size);
-            ps.setString(3, conditie);
-            ps.setDouble(4, price);
-            ps.setString(5,usernam);
-            ps.setBoolean(6,aproved);
+            ps.setInt(1,new_id);
+            ps.setString(2, name);
+            ps.setInt(3, size);
+            ps.setString(4, conditie);
+            ps.setDouble(5, price);
+            ps.setString(6,usernam);
+            ps.setBoolean(7,aproved);
 
             var rs = ps.executeUpdate();
             super.add(s);
@@ -120,8 +122,7 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
     }
 
     public boolean updateIndexes(int id) {
-        String sql = "update \"Sneaker\" SET id = id - 1" +
-                "where id > " + id;
+        String sql = "update \"Sneaker\" SET id = id - 1" + " where id > " + id;
 
         try (var connection = DriverManager.getConnection(url, username, password)
         ) {
@@ -160,9 +161,7 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
 
     public boolean deleteSneaker(Sneaker s) throws CustomException, SQLException {
 
-        int idFromWhereToUpdate = findSneakerId(s);
-        if (idFromWhereToUpdate < 0)
-            return false;
+        int idFromWhereToUpdate = s.getId();
 
         if (idFromWhereToUpdate > 0) {
             String sql = "delete from \"Sneaker\" " +
