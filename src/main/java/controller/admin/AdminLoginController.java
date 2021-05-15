@@ -3,6 +3,7 @@ package controller.admin;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import config.DatabaseCredentials;
+import controller.AlertBox;
 import domain.Sneaker;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -54,8 +55,19 @@ public class AdminLoginController extends DatabaseCredentials implements Initial
 
     }
 
-    public void acceptButtonClicked(ActionEvent actionEvent){
-
+    public void acceptButtonClicked(ActionEvent actionEvent)throws Exception{
+        int id = Integer.parseInt(idField.getText());
+        Sneaker s = SneakerRepository.getSneaker(id);
+        if(s != null){
+            if(sneakerRepository.updateSneaker(s.getPrice(),true, s)){
+                AlertBox.display("UPDATED", "The sneaker is approved");
+                setObservableListForSneakerTable();
+            }else{
+                AlertBox.display("ERROR", "The price hasn`t been updated");
+            }
+        }else{
+            AlertBox.display("ERROR", "Invalid ID");
+        }
     }
 
     public void declineButtonClicked(ActionEvent actionEvent){

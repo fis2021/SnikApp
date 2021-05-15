@@ -127,7 +127,7 @@ public class ProfileController extends DatabaseCredentials implements Initializa
         int newPrice = Integer.parseInt(priceText.getText());
         Sneaker s = SneakerRepository.getSneaker(id);
         if(s != null){
-            if(sneakerRepository.updateSneaker(newPrice, s)){
+            if(sneakerRepository.updateSneaker(newPrice,s.isAproved(), s)){
                 AlertBox.display("UPDATED", "The price has been updated");
                 setObservableListForSneakerTable();
             }else{
