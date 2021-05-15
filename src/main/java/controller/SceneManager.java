@@ -20,7 +20,8 @@ public class SceneManager {
        REGISTER("fxml/register.fxml"),
         MARKET("fxml/market.fxml"),
         PROFILE("fxml/profile.fxml"),
-        NEWPAIR("fxml/newpair.fxml");
+        NEWPAIR("fxml/newpair.fxml"),
+        ADMINLOGIN("fxml/adminLogin.fxml");
 
         public final String url;
 
