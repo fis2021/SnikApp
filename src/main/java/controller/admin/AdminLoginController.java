@@ -58,7 +58,7 @@ public class AdminLoginController extends DatabaseCredentials implements Initial
     public void acceptButtonClicked(ActionEvent actionEvent)throws Exception{
         int id = Integer.parseInt(idField.getText());
         Sneaker s = SneakerRepository.getSneaker(id);
-        if(s != null){
+        if(s != null && !s.getUsername().equals("admin")){
             if(sneakerRepository.updateSneaker(s.getPrice(),true, s)){
                 AlertBox.display("UPDATED", "The sneaker is approved");
                 setObservableListForSneakerTable();
@@ -74,7 +74,7 @@ public class AdminLoginController extends DatabaseCredentials implements Initial
         if(!idField.getText().isEmpty()){
             if(sneakerRepository.idExists(Integer.parseInt(idField.getText())) ){
                 Sneaker s  = sneakerRepository.getSneaker(Integer.parseInt(idField.getText()));
-                if(!s.isAproved()){
+                if(!s.isAproved() && !s.getUsername().equals("admin")){
                     sneakerRepository.deleteSneaker(s);
                     AlertBox.display("DECLINE", "The sneaker is declined!");
                     setObservableListForSneakerTable();
@@ -93,7 +93,7 @@ public class AdminLoginController extends DatabaseCredentials implements Initial
     public void setObservableListForSneakerTable(){
         ObservableList<AdminLoginController.Sneak> products = FXCollections.observableArrayList();
         for(Sneaker s : sneakerRepository.getAll()){
-            if(!s.isAproved()){
+            if(s.isAproved() == false && !s.getUsername().equals("admin")){
                 AdminLoginController.Sneak sneak = new AdminLoginController.Sneak(Integer.toString(s.getId()), s.getName(), Integer.toString(s.getSize()),s.getCondition(), Double.toString(s.getPrice()));
                 products.add(sneak);
             }

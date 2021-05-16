@@ -62,6 +62,7 @@ public class MarketController extends DatabaseCredentials implements Initializab
     public void setObservableListForSneakerTable(){
         ObservableList<Sneak> products = FXCollections.observableArrayList();
         for(Sneaker s : sneakerRepository.getAll()){
+            System.out.println(s);
             if(!s.getUsername().equals(usernameLogged)&& s.isAproved()){
                 Sneak sneak = new Sneak(Integer.toString(s.getId()), s.getName(), Integer.toString(s.getSize()),s.getCondition(), Double.toString(s.getPrice()));
                 products.add(sneak);
@@ -124,7 +125,7 @@ public class MarketController extends DatabaseCredentials implements Initializab
         if(!idToBuy.getText().isEmpty()){
             if(sneakerRepository.idExists(Integer.parseInt(idToBuy.getText())) ){
                 Sneaker s  = sneakerRepository.getSneaker(Integer.parseInt(idToBuy.getText()));
-                if(!s.getUsername().equals(usernameLogged)){
+                if(!s.getUsername().equals(usernameLogged) && s.isAproved()){
                     sneakerRepository.deleteSneaker(s);
                     AlertBox.display("GOT` EM", "GOT` EM");
                     setObservableListForSneakerTable();
@@ -144,11 +145,9 @@ public class MarketController extends DatabaseCredentials implements Initializab
     public void profileButtonClicked(ActionEvent actionEvent) throws Exception{
         FXMLLoader loader = SceneManager.getInstance().getFXML(SceneManager.States.PROFILE);
         ProfileController controller = loader.getController();
-        controller.getSneakerRepository().getAll();
         controller.setUsernameLogged(usernameLogged);
         controller.initializeSneakTable();
         controller.setObservableListForSneakerTable();
-        controller.getSneakerTable().refresh();
         SceneManager.getInstance().switchScene(SceneManager.States.PROFILE);
         SceneManager.getInstance().switchScene(SceneManager.States.PROFILE);
     }
