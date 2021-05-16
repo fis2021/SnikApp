@@ -15,11 +15,11 @@
                 <Font size="43.0" />
             </font>
         </Label>
-        <VBox layoutX="174.0" layoutY="164.0" prefHeight="336.0" prefWidth="350.0" spacing="30.0">
+        <VBox layoutX="154.0" layoutY="164.0" prefHeight="336.0" prefWidth="370.0" spacing="30.0">
             <children>
                 <HBox spacing="20.0">
                     <children>
-                        <Label prefHeight="17.0" prefWidth="95.0" text="username" textFill="#09a706">
+                        <Label prefHeight="17.0" prefWidth="95.0" text="Username" textFill="#09a706">
                             <font>
                                 <Font size="21.0" />
                             </font>
@@ -29,7 +29,7 @@
                 </HBox>
                 <HBox layoutX="10.0" layoutY="10.0" spacing="20.0">
                     <children>
-                        <Label prefHeight="17.0" prefWidth="95.0" text="pw" textFill="#09a706">
+                        <Label prefHeight="17.0" prefWidth="95.0" text="Password" textFill="#09a706">
                             <font>
                                 <Font size="21.0" />
                             </font>
@@ -39,7 +39,7 @@
                 </HBox>
                 <HBox layoutX="10.0" layoutY="41.0" spacing="20.0">
                     <children>
-                        <Label prefHeight="17.0" prefWidth="95.0" text="firsxt" textFill="#09a706">
+                        <Label prefHeight="17.0" prefWidth="95.0" text="First N" textFill="#09a706">
                             <font>
                                 <Font size="21.0" />
                             </font>
@@ -49,7 +49,7 @@
                 </HBox>
                 <HBox layoutX="10.0" layoutY="72.0" spacing="20.0">
                     <children>
-                        <Label prefHeight="17.0" prefWidth="95.0" text="last" textFill="#09a706">
+                        <Label prefHeight="17.0" prefWidth="95.0" text="Last N" textFill="#09a706">
                             <font>
                                 <Font size="21.0" />
                             </font>
@@ -59,7 +59,7 @@
                 </HBox>
                 <HBox layoutX="10.0" layoutY="103.0" spacing="20.0">
                     <children>
-                        <Label prefHeight="17.0" prefWidth="95.0" text="phone" textFill="#09a706">
+                        <Label prefHeight="17.0" prefWidth="95.0" text="Phone" textFill="#09a706">
                             <font>
                                 <Font size="21.0" />
                             </font>
@@ -69,7 +69,7 @@
                 </HBox>
                 <HBox layoutX="10.0" layoutY="134.0" spacing="20.0">
                     <children>
-                        <Label prefHeight="17.0" prefWidth="95.0" text="adr" textFill="#09a706">
+                        <Label prefHeight="17.0" prefWidth="95.0" text="Adress" textFill="#09a706">
                             <font>
                                 <Font size="21.0" />
                             </font>
@@ -79,7 +79,7 @@
                 </HBox>
             </children>
         </VBox>
-        <Button fx:id="confirmButton" layoutX="245.0" layoutY="516.0" mnemonicParsing="false" onAction="#confirmButtonClicked" prefHeight="46.0" prefWidth="149.0" style="-fx-background-color: cyan;" text="Confirm" textFill="#7c3912" />
+        <Button fx:id="confirmButton" layoutX="245.0" layoutY="516.0" mnemonicParsing="false" onAction="#confirmButtonClicked" prefHeight="46.0" prefWidth="149.0" style="-fx-background-color: cyan;" text="Confirm" />
         <Button fx:id="backButton" layoutX="38.0" layoutY="19.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="31.0" prefWidth="525.0" text="Back" />
     </children>
 </AnchorPane>
