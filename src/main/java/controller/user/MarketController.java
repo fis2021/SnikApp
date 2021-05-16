@@ -62,13 +62,10 @@ public class MarketController extends DatabaseCredentials implements Initializab
     public void setObservableListForSneakerTable(){
         ObservableList<Sneak> products = FXCollections.observableArrayList();
         for(Sneaker s : sneakerRepository.getAll()){
-            System.out.println(s);
             if(!s.getUsername().equals(usernameLogged)&& s.isAproved()){
                 Sneak sneak = new Sneak(Integer.toString(s.getId()), s.getName(), Integer.toString(s.getSize()),s.getCondition(), Double.toString(s.getPrice()));
                 products.add(sneak);
             }
-            //System.out.println("DATABASE" + s.toString());
-            //System.out.println("Sneak" + sneak.toString());
         }
         final TreeItem<Sneak> root = new RecursiveTreeItem<Sneak>(products, RecursiveTreeObject::getChildren);
         sneakerTable.setRoot(root);
