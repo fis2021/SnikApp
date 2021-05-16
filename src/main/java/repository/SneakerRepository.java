@@ -58,16 +58,15 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
         int new_id = super.elems.size() + 1;
 
         try (var connection = DriverManager.getConnection(url, username, password)) {
-            sql = "insert into \"Sneaker\"(id,name, size, conditie, price, proprietar,aproved) VALUES (?,?,?,?,?,?,?) ";
+            sql = "insert into \"Sneaker\"(name, size, conditie, price, proprietar,aproved) VALUES (?,?,?,?,?,?) ";
 
             var ps = connection.prepareStatement(sql);
-            ps.setInt(1,new_id);
-            ps.setString(2, name);
-            ps.setInt(3, size);
-            ps.setString(4, conditie);
-            ps.setDouble(5, price);
-            ps.setString(6,usernam);
-            ps.setBoolean(7,aproved);
+            ps.setString(1, name);
+            ps.setInt(2, size);
+            ps.setString(3, conditie);
+            ps.setDouble(4, price);
+            ps.setString(5,usernam);
+            ps.setBoolean(6,aproved);
 
             var rs = ps.executeUpdate();
             super.add(s);
@@ -174,9 +173,10 @@ public class SneakerRepository extends AbstractRepository<Integer, Sneaker> {
 
                 //deleting from the memory repository
                 super.elems.remove(s.getId());
-                if (updateIndexes(idFromWhereToUpdate)) {
-                    return true;
-                }
+                return true;
+//                if (updateIndexes(idFromWhereToUpdate)) {
+//                    return true;
+//                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
